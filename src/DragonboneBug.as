@@ -48,7 +48,10 @@ class StarlingGame extends Sprite{
 		_factory.addSkeletonData(DataParser.parseData(JSON.parse(new DSkeleton())));	
 		_factory.addTextureAtlas(new StarlingTextureAtlas(Texture.fromBitmapData(new DTexture().bitmapData, true, false, 1), JSON.parse(new DTextureAtlas())));
 		_armature = _factory.buildArmature("Dragon");
-		_armature.animation.gotoAndPlay("stand");
+		_armature.animation.gotoAndPlay("stand", 1, 1, 0, 0, null);
+		
+		_armature.animation.stop();
+		WorldClock.clock.add(_armature);
 		_armature.display.x = 200;
 		_armature.display.y = 500;
 		addChild(_armature.display as Sprite);
